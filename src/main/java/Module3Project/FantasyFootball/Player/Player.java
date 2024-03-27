@@ -1,6 +1,7 @@
 package Module3Project.FantasyFootball.Player;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "players")
@@ -9,6 +10,8 @@ public class Player {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
+    @Size(min = 3, max = 60)
+    private String name;
 
     public Long getId() {
         return id;
