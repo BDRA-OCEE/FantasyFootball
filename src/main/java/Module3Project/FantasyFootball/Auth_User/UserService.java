@@ -24,7 +24,7 @@ public class UserService {
     }
 
     public String submit(UserDTO userDTO, BindingResult bindingResult, Model model) {
-        Optional<UserEntity> optionalUserEntityNameCheck = userRepository.findByName(userDTO.getUsername());
+        Optional<UserEntity> optionalUserEntityNameCheck = userRepository.findByUsername(userDTO.getUsername());
         Optional<UserEntity> optionalUserEntityEmailCheck = userRepository.findByEmail(userDTO.getEmail());
 
         if (bindingResult.hasErrors()){
