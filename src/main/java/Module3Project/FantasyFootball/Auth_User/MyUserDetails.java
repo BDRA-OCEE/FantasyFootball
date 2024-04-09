@@ -1,4 +1,4 @@
-package Module3Project.FantasyFootball.Auth;
+package Module3Project.FantasyFootball.Auth_User;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

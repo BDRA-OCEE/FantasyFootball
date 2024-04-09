@@ -1,4 +1,4 @@
-package Module3Project.FantasyFootball.Auth;
+package Module3Project.FantasyFootball.Auth_User;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

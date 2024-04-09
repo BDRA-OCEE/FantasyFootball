@@ -1,4 +1,4 @@
-package Module3Project.FantasyFootball.Auth;
+package Module3Project.FantasyFootball.Auth_User;
 
 public enum Role {
     ADMIN("Admin"),
