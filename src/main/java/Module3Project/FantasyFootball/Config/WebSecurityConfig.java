@@ -33,7 +33,7 @@ public class WebSecurityConfig {
                         .anyRequest().authenticated()
                 )
                 .formLogin((form) -> form
-                        .loginPage("/login")
+                        .loginPage("/user/login")
                         .permitAll()
                 )
                 .logout((logout) -> logout.permitAll());
