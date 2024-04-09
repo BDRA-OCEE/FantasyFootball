@@ -1,12 +1,11 @@
 package Module3Project.FantasyFootball.Auth_User;
 
 import Module3Project.FantasyFootball.Auth_User.Role.Role;
-import Module3Project.FantasyFootball._DeprecatedParts.Auth_UserDpr.RoleEnum;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -19,8 +18,13 @@ public class UserDTO {
     private String confirmPassword;
     @Size(min = 4, max = 64)
     private String email;
-    @Enumerated(EnumType.STRING)
-    private RoleEnum roleEnum;
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "user_roles",
+            joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "id")}
+    )
+    private List<Role> role = new ArrayList<>();
     @Size(min = 4, max = 32)
     private String displayName;
 
@@ -31,7 +35,7 @@ public class UserDTO {
                 ", password='" + password + '\'' +
                 ", confirmPassword='" + confirmPassword + '\'' +
                 ", email='" + email + '\'' +
-                ", role=" + roleEnum +
+                ", role=" + role +
                 ", displayName='" + displayName + '\'' +
                 '}';
     }
@@ -69,11 +73,11 @@ public class UserDTO {
     }
 
     public List<Role> getRole() {
-        return roleEnum;
+        return role;
     }
 
-    public void setRole(RoleEnum roleEnum) {
-        this.roleEnum = roleEnum;
+    public void setRole(List<Role> role) {
+        this.role = role;
     }
 
     public String getDisplayName() {
