@@ -23,10 +23,10 @@ public class Role {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Size(min = 3, max = 20)
+    @Size(min = 3, max = 32)
     private String name;
 
-    @ManyToMany(mappedBy = "roles")
+    @ManyToMany(mappedBy = "role")
     private List<UserEntity> users = new ArrayList<>();
 
 }

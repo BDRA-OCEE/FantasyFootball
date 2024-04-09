@@ -1,9 +1,13 @@
 package Module3Project.FantasyFootball.Auth_User;
 
+import Module3Project.FantasyFootball.Auth_User.Role.Role;
+import Module3Project.FantasyFootball._DeprecatedParts.Auth_UserDpr.RoleEnum;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.Size;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @Component
 public class UserDTO {
@@ -64,7 +68,7 @@ public class UserDTO {
         this.email = email;
     }
 
-    public RoleEnum getRole() {
+    public List<Role> getRole() {
         return roleEnum;
     }
 

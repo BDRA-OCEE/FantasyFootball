@@ -1,5 +1,6 @@
 package Module3Project.FantasyFootball.Auth_User;
 
+import Module3Project.FantasyFootball.Auth_User.Role.Role;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -31,7 +32,7 @@ public class UserEntity {
             joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "id")}
     )
-    private List<RoleEnum> roleEnums = new ArrayList<>();
+    private List<Role> role = new ArrayList<>();
 
 
     @Size(min = 4, max = 32)
@@ -40,12 +41,12 @@ public class UserEntity {
 
     @Override
     public String toString() {
-        return "User{" +
+        return "UserEntity{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
-
+                ", role=" + role +
                 ", displayName='" + displayName + '\'' +
                 ", enabled=" + enabled +
                 '}';
@@ -75,7 +76,13 @@ public class UserEntity {
         this.email = email;
     }
 
+    public List<Role> getRole() {
+        return role;
+    }
 
+    public void setRole(List<Role> roles) {
+        this.role = roles;
+    }
 
     public String getDisplayName() {
         return displayName;

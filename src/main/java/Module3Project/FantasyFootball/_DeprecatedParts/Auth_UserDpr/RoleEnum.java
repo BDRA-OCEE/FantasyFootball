@@ -1,4 +1,5 @@
-package Module3Project.FantasyFootball.Auth_User;
+/*
+package Module3Project.FantasyFootball._DeprecatedParts.Auth_UserDpr;
 
 public enum RoleEnum {
 
@@ -19,3 +20,4 @@ public enum RoleEnum {
         return this.label;
     }
 }
+*/
