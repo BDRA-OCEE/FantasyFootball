@@ -1,10 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
+<nav class="navbar navbar-expand-lg bg-body-tertiary" th:fragment="navbar">
+    <div class="container-fluid">
+        <ul class="nav justify-content-center">
+            <a class="navbar-brand border-bottom pb-3 mb-3" href="/">Home</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav border-bottom pb-3 mb-3">
+<!--                    <a class="nav-link" href="/country/add">Add Country</a>
+
+                    <a class="nav-link" href="/country/show">Show Countries</a>-->
+
+
+                </div>
+                <ul class="nav justify-content-right border-bottom pb-3 mb-3">
+                    <a class="navbar-brand" href="/user/register">Register</a>
+                    <a class="navbar-brand" href="/user/login">Login</a>
+                    <a class="navbar-brand" href="/user/logout">Logout</a>
+                    <!--sec:authorize="isAuthenticated()"-->
+                </ul>
+            </div>
+        </ul>
+    </div>
+</nav>
 
 </body>
 </html>

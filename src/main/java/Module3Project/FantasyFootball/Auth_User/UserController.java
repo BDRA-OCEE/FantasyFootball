@@ -21,7 +21,12 @@ public class UserController {
 
     @GetMapping("/login")
     public String login() {
-        return "user/login";
+        return "auth/UserLogin";
+    }
+
+    @GetMapping("/logout")
+    public String logout() {
+        return "auth/UserLogout";
     }
 
     @GetMapping("/register")
