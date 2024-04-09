@@ -1,5 +1,7 @@
-package Module3Project.FantasyFootball.Auth_User;
+package Module3Project.FantasyFootball.Auth_User.Details;
 
+import Module3Project.FantasyFootball.Auth_User.UserEntity;
+import Module3Project.FantasyFootball.Auth_User.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -11,16 +13,16 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.getUserByUsername(username);
+        UserEntity userEntity = userRepository.getUserByUsername(username);
 
-        if (user == null) {
-            user = userRepository.getUserByEmail(username);
-            if (user == null){
+        if (userEntity == null) {
+            userEntity = userRepository.getUserByEmail(username);
+            if (userEntity == null){
                 throw new UsernameNotFoundException("Could not find user");
             }
         }
 
-        return new MyUserDetails(user);
+        return new MyUserDetails(userEntity);
     }
 
 }

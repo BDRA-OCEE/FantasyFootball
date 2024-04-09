@@ -1,38 +1,34 @@
 package Module3Project.FantasyFootball.Auth_User;
 
-import jakarta.persistence.*;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.Size;
+import org.springframework.stereotype.Component;
 
-@Entity
-@Table(name = "users")
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Long id;
-
+@Component
+public class UserDTO {
     @Size(min = 4, max = 32)
     private String username;
     @Size(min = 4, max = 64)
     private String password;
     @Size(min = 4, max = 64)
+    private String confirmPassword;
+    @Size(min = 4, max = 64)
     private String email;
     @Enumerated(EnumType.STRING)
-    private Role role;
+    private RoleEnum roleEnum;
     @Size(min = 4, max = 32)
     private String displayName;
-    private boolean enabled;
 
     @Override
     public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
+        return "UserDTO{" +
+                "username='" + username + '\'' +
                 ", password='" + password + '\'' +
+                ", confirmPassword='" + confirmPassword + '\'' +
                 ", email='" + email + '\'' +
-                ", role=" + role +
+                ", role=" + roleEnum +
                 ", displayName='" + displayName + '\'' +
-                ", enabled=" + enabled +
                 '}';
     }
 
@@ -52,6 +48,14 @@ public class User {
         this.password = password;
     }
 
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -60,12 +64,12 @@ public class User {
         this.email = email;
     }
 
-    public Role getRole() {
-        return role;
+    public RoleEnum getRole() {
+        return roleEnum;
     }
 
-    public void setRole(Role role) {
-        this.role = role;
+    public void setRole(RoleEnum roleEnum) {
+        this.roleEnum = roleEnum;
     }
 
     public String getDisplayName() {
@@ -74,21 +78,5 @@ public class User {
 
     public void setDisplayName(String displayName) {
         this.displayName = displayName;
-    }
-
-    public boolean isEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 }

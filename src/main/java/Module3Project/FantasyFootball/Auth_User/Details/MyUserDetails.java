@@ -1,5 +1,6 @@
-package Module3Project.FantasyFootball.Auth_User;
+package Module3Project.FantasyFootball.Auth_User.Details;
 
+import Module3Project.FantasyFootball.Auth_User.UserEntity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -8,15 +9,15 @@ import java.util.Arrays;
 import java.util.Collection;
 
 public class MyUserDetails implements UserDetails {
-    private User user;
+    private UserEntity userEntity;
 
-    public MyUserDetails(User user) {
-        this.user = user;
+    public MyUserDetails(UserEntity userEntity) {
+        this.userEntity = userEntity;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(user.getRole().toString());
+        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(userEntity.getRole().toString());
         return Arrays.asList(authority);
     }
 

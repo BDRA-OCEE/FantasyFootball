@@ -1,6 +1,6 @@
 package Module3Project.FantasyFootball.Config;
 
-import Module3Project.FantasyFootball.Auth_User.UserDetailsServiceImpl;
+import Module3Project.FantasyFootball.Auth_User.Details.UserDetailsServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;

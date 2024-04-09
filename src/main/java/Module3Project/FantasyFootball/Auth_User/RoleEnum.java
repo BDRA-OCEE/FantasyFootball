@@ -1,11 +1,16 @@
 package Module3Project.FantasyFootball.Auth_User;
 
-public enum Role {
+public enum RoleEnum {
+
+    //POTENTIALLY UNWANTED
+    //CURRENTLY UNUSED
+
+
     ADMIN("Admin"),
     USER("User");
     private String label;
 
-    Role(String label) {
+    RoleEnum(String label) {
         this.label = label;
     }
 
