@@ -18,13 +18,13 @@ public class UserDTO {
     private String confirmPassword;
     @Size(min = 4, max = 64)
     private String email;
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+/*    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
             name = "user_roles",
             joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "id")}
     )
-    private List<Role> role = new ArrayList<>();
+    private List<Role> role = new ArrayList<>();*/
     @Size(min = 4, max = 32)
     private String displayName;
 
@@ -35,7 +35,7 @@ public class UserDTO {
                 ", password='" + password + '\'' +
                 ", confirmPassword='" + confirmPassword + '\'' +
                 ", email='" + email + '\'' +
-                ", role=" + role +
+
                 ", displayName='" + displayName + '\'' +
                 '}';
     }
@@ -72,13 +72,6 @@ public class UserDTO {
         this.email = email;
     }
 
-    public List<Role> getRole() {
-        return role;
-    }
-
-    public void setRole(List<Role> role) {
-        this.role = role;
-    }
 
     public String getDisplayName() {
         return displayName;
