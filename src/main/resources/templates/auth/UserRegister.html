@@ -13,17 +13,19 @@
 <body class="d-flex flex-column h-100">
 <div th:replace="~{fragments/navbar :: navbar}"></div>
 
-<div sec:authorize="isAuthenticated()">Text visible only to authenticated users.</div>
-<!--<span th:remove="tag" sec:authentication="name">Where does this go</span>!-->
+<div class="form-container">
+    <h1>Register</h1>
 
-<div class="container py-3 my-4">
-    Authenticated username:
-    <div sec:authentication="name"></div>
-</div>
-
-<div class="container py-3 my-4">
-    Authenticated user roles:
-    <div sec:authentication="authorities"></div>
+    <form action="#" th:action="@{/user/submit}" th:object="${userDTO}" method="post">
+        <div class="form-group">
+            Username:
+            <input type="text" th:field="*{username}"/>
+            <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span>
+            <div th:if="${userExistMessage}" style="color: red;">
+                <p th:text="${userExistMessage}"></p>
+            </div>
+        </div>
+    </form>
 </div>
 
 <div th:replace="~{fragments/footer :: footer}"></div>
