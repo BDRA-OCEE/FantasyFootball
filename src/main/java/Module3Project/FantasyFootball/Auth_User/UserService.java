@@ -24,24 +24,29 @@ public class UserService {
     }
 
     public String submit(UserDTO userDTO, BindingResult bindingResult, Model model) {
-        Optional<UserEntity> optionalUserEntity = userRepository.findByName(userDTO.getUsername());
-        Optional<UserEntity> optionalUserEntity2 = userRepository.findByEmail(userDTO.getEmail());
+        Optional<UserEntity> optionalUserEntityNameCheck = userRepository.findByName(userDTO.getUsername());
+        Optional<UserEntity> optionalUserEntityEmailCheck = userRepository.findByEmail(userDTO.getEmail());
 
         if (bindingResult.hasErrors()){
             return "auth/UserRegister";
         }
         if (!ConfirmDTOField.confirmDTOField(userDTO.getPassword(), userDTO.getConfirmPassword())){
-            model.addAttribute("nameDoesNotMatch", "Password does not match!");
+            model.addAttribute("passwordDoesNotMatch", "Password does not match!");
             return "auth/UserRegister";
         }
-        if (optionalUserEntity.isPresent()){
+        if (!ConfirmDTOField.confirmDTOField(userDTO.getEmail(), userDTO.getConfirmEmail())){
+            model.addAttribute("emailDoesNotMatch", "Email does not match!");
+            return "auth/UserRegister";
+        }
+        if (optionalUserEntityNameCheck.isPresent()){
             model.addAttribute("not_unique_name", "Username already exists!");
             return "auth/UserRegister";
         }
-        if (optionalUserEntity2.isPresent()){
-            model.addAttribute("not_unique_name", "Email already exists!");
+        if (optionalUserEntityEmailCheck.isPresent()){
+            model.addAttribute("not_unique_email", "Email already exists!");
             return "auth/UserRegister";
         }
+
         UserEntity userEntity = userMapper.toEntity(userDTO);
         userRepository.save(userEntity);
         return "auth/UserSubmit";

@@ -1,13 +1,16 @@
 package Module3Project.FantasyFootball.Auth_User;
 
-import Module3Project.FantasyFootball.Auth_User.Role.Role;
-import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.List;
-
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Component
 public class UserDTO {
     @Size(min = 4, max = 32)
@@ -18,13 +21,8 @@ public class UserDTO {
     private String confirmPassword;
     @Size(min = 4, max = 64)
     private String email;
-/*    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "user_roles",
-            joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
-            inverseJoinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "id")}
-    )
-    private List<Role> role = new ArrayList<>();*/
+    @Size(min = 4, max = 64)
+    private String confirmEmail;
     @Size(min = 4, max = 32)
     private String displayName;
 
@@ -35,49 +33,9 @@ public class UserDTO {
                 ", password='" + password + '\'' +
                 ", confirmPassword='" + confirmPassword + '\'' +
                 ", email='" + email + '\'' +
-
+                ", confirmEmail='" + confirmEmail + '\'' +
                 ", displayName='" + displayName + '\'' +
                 '}';
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getConfirmPassword() {
-        return confirmPassword;
-    }
-
-    public void setConfirmPassword(String confirmPassword) {
-        this.confirmPassword = confirmPassword;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-
-    public String getDisplayName() {
-        return displayName;
-    }
-
-    public void setDisplayName(String displayName) {
-        this.displayName = displayName;
-    }
 }
