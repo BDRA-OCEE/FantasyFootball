@@ -1,7 +1,7 @@
 package Module3Project.FantasyFootball.Auth_User;
 
 import Module3Project.FantasyFootball.Auth_User.Role.RoleRepository;
-import Module3Project.FantasyFootball.Util.ConfirmDTOField;
+import Module3Project.FantasyFootball.Util.ConfirmField;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
@@ -30,11 +30,11 @@ public class UserService {
         if (bindingResult.hasErrors()){
             return "auth/UserRegister";
         }
-        if (!ConfirmDTOField.confirmDTOField(userDTO.getPassword(), userDTO.getConfirmPassword())){
+        if (!ConfirmField.confirmField(userDTO.getPassword(), userDTO.getConfirmPassword())){
             model.addAttribute("passwordDoesNotMatch", "Password does not match!");
             return "auth/UserRegister";
         }
-        if (!ConfirmDTOField.confirmDTOField(userDTO.getEmail(), userDTO.getConfirmEmail())){
+        if (!ConfirmField.confirmField(userDTO.getEmail(), userDTO.getConfirmEmail())){
             model.addAttribute("emailDoesNotMatch", "Email does not match!");
             return "auth/UserRegister";
         }

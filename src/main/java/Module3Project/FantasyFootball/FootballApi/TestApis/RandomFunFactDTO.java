@@ -1,4 +1,3 @@
-/*
 package Module3Project.FantasyFootball.FootballApi.TestApis;
 
 import lombok.Getter;
@@ -16,4 +15,3 @@ public class RandomFunFactDTO {
     private String language;
     private String permalink;
 }
-*/
