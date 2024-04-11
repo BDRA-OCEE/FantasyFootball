@@ -21,12 +21,20 @@ public class Player {
     @Min(10000)
     @Max(10000000)
     private double price;
+    @Size(min = 5, max = 30)
+    private String sportsTeam;
+    @Enumerated(EnumType.STRING)
+    private PlayerRole playerRole;
 
-    public Long getId() {
-        return id;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
+    @Override
+    public String toString() {
+        return "Player{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                ", sportsTeam='" + sportsTeam + '\'' +
+                ", playerRole=" + playerRole +
+                '}';
     }
 }

@@ -1,4 +1,3 @@
-/*
 package Module3Project.FantasyFootball.FootballApi.TestApis;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,4 +17,3 @@ public class TestApiController {
     }
 
 }
-*/
