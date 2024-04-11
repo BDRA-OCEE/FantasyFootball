@@ -20,7 +20,7 @@ public class Player {
     private String name;
     @Min(10000)
     @Max(10000000)
-    private int price;
+    private double price;
 
     public Long getId() {
         return id;
