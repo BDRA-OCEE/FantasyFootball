@@ -37,10 +37,10 @@ public class FootballApiController {
         return result;
     }
 
-    @GetMapping("/api/rapidapi")
+    /*@GetMapping("/api/rapidapi")
     public PlayerDTO getRapidApi() {
         return footballRapidApiService.getAllPlayersRapidApi();
-    }
+    }*/
 
     @GetMapping("/api/api-sports")
     public PlayerDTO getApiSports() {
