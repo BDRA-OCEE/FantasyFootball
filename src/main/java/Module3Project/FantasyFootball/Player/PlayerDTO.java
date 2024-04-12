@@ -1,21 +1,16 @@
 package Module3Project.FantasyFootball.Player;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
-
+import org.springframework.stereotype.Component;
 @Getter
 @Setter
-@Entity
-@Table(name = "players")
-public class Player {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Long id;
+@NoArgsConstructor
+@AllArgsConstructor
+@Component
+public class PlayerDTO {
 
     private String name;
     private String firstName;
@@ -26,12 +21,10 @@ public class Player {
     private String weight;
     private boolean injured;
 
-
     @Override
     public String toString() {
-        return "Player{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
+        return "PlayerDTO{" +
+                "name='" + name + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", age=" + age +
