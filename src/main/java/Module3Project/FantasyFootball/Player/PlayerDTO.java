@@ -1,6 +1,7 @@
 package Module3Project.FantasyFootball.Player;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,9 +11,16 @@ import org.springframework.stereotype.Component;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Component
+@Entity
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class PlayerDTO {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
+    private Long id;
+
+    @Version
+    Integer version;
 
     private String name;
     private String firstName;

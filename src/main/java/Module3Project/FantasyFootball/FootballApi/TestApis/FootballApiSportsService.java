@@ -5,6 +5,8 @@ import Module3Project.FantasyFootball.Player.APIResponse.APIResponse;
 import Module3Project.FantasyFootball.Player.APIResponse.PlayerResponse;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -13,7 +15,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -31,8 +32,8 @@ public class FootballApiSportsService {
         this.playerMapper = playerMapper;
     }
 
-    //@Autowired
-    //private RestTemplate restTemplate;
+    @Autowired
+    private RestTemplate restTemplate;
 
     public PlayersListDTO getAllPlayersApiSports() {
         try {
@@ -98,19 +99,17 @@ public class FootballApiSportsService {
             httpHeaders.set("x-rapidapi-host", apiSportsHost);
 
             RestTemplate restTemplate = new RestTemplate();
-            //ResponseEntity<PlayersListDTO> playersListDTOResponseEntity = restTemplate.exchange(apiSportsUrl, HttpMethod.GET, new HttpEntity<>(httpHeaders), PlayersListDTO.class);
-
             ResponseEntity<String> stringResponseEntity = restTemplate.exchange(apiSportsUrl, HttpMethod.GET, new HttpEntity<>(httpHeaders), String.class);
 
             ObjectMapper objectMapper = new ObjectMapper();
             APIResponse apiResponse = objectMapper.readValue(stringResponseEntity.getBody(), APIResponse.class);
 
-            List<PlayerResponse> playerResponses = apiResponse.getResponse();
+/*            List<PlayerResponse> playerResponses = apiResponse.getResponse();
             for (PlayerResponse playerResponse : playerResponses) {
                 PlayerDTO playerDTO = playerResponse.getPlayerDTO();
                 //playerDTO.setName(playerResponse.getPlayerDTO().getName());
                 //String name = playerResponse.getPlayerDTO().getName();
-            }
+            }*/
 
             return stringResponseEntity;
         } catch (Exception e){
@@ -118,16 +117,16 @@ public class FootballApiSportsService {
         }
     }
 
-    public ResponseEntity getAllPlayersApiSportsTest3() {
+    public List<PlayerDTO> getAllPlayersCMDLineMain() {
         try {
             HttpHeaders httpHeaders = new HttpHeaders();
-            httpHeaders.set("X-RapidAPI-Key", "eb641cfe432da0486fd17b785543f13c");
-            httpHeaders.set("x-rapidapi-host", "v3.football.api-sports.io");
+            httpHeaders.set("X-RapidAPI-Key", apiSportsKey);
+            httpHeaders.set("x-rapidapi-host", apiSportsHost);
 
-            RestTemplate restTemplate = new RestTemplate();
-            ResponseEntity<String> stringResponseEntity = restTemplate.exchange("https://v3.football.api-sports.io/players?league=5&season=2020", HttpMethod.GET, new HttpEntity<>(httpHeaders), String.class);
+            //RestTemplate restTemplate = new RestTemplate();
+            ResponseEntity<List<PlayerDTO>> listResponseEntity= restTemplate.exchange(apiSportsUrl, HttpMethod.GET, new HttpEntity<>(httpHeaders), new ParameterizedTypeReference<List<PlayerDTO>>() {});
 
-            return stringResponseEntity;
+            return listResponseEntity.getBody();
         } catch (Exception e){
             throw new RuntimeException();
         }

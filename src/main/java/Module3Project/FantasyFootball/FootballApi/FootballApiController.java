@@ -54,19 +54,23 @@ public class FootballApiController {
         return apiSportsService.getAllPlayersApiSports();
     }
 
-    @GetMapping("/api/api-sportsj")
+    @GetMapping("/api/api-sports2")
     public void parseJsonAndExtractPlayers(String json) throws IOException {
         apiSportsService.parseJsonAndExtractPlayers(json);
     }
 
-    @GetMapping("/api/api-sportst")
+    @GetMapping("/api/api-sports3")
     public Object getApiSportsTest() {
         return apiSportsService.getAllPlayersApiSportsTest();
     }
 
-    @GetMapping("/api/api-sportst2")
+    @GetMapping("/api/api-sports4")
     public ResponseEntity getApiSportsTest2() {
         return apiSportsService.getAllPlayersApiSportsTest2();
     }
 
+    @GetMapping("/api/api-sports5")
+    public List<PlayerDTO> getApiSportsTest3() {
+        return apiSportsService.getAllPlayersCMDLineMain();
+    }
 }
