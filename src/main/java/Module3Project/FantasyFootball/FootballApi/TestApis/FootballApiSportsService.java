@@ -118,6 +118,21 @@ public class FootballApiSportsService {
         }
     }
 
+    public ResponseEntity getAllPlayersApiSportsTest3() {
+        try {
+            HttpHeaders httpHeaders = new HttpHeaders();
+            httpHeaders.set("X-RapidAPI-Key", "eb641cfe432da0486fd17b785543f13c");
+            httpHeaders.set("x-rapidapi-host", "v3.football.api-sports.io");
+
+            RestTemplate restTemplate = new RestTemplate();
+            ResponseEntity<String> stringResponseEntity = restTemplate.exchange("https://v3.football.api-sports.io/players?league=5&season=2020", HttpMethod.GET, new HttpEntity<>(httpHeaders), String.class);
+
+            return stringResponseEntity;
+        } catch (Exception e){
+            throw new RuntimeException();
+        }
+    }
+
     public void parseJsonAndExtractPlayers(String json) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         JsonNode rootNode = mapper.readTree(json);
