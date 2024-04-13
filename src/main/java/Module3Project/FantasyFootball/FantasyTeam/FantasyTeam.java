@@ -1,5 +1,6 @@
 package Module3Project.FantasyFootball.FantasyTeam;
 
+import Module3Project.FantasyFootball.Player.Player;
 import jakarta.persistence.*;
 
 @Entity
@@ -17,4 +18,7 @@ public class FantasyTeam {
     public void setId(Long id) {
         this.id = id;
     }
+    @ManyToOne
+    private Player player1;
+
 }

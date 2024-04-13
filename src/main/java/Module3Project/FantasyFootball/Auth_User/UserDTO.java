@@ -1,5 +1,6 @@
 package Module3Project.FantasyFootball.Auth_User;
 
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,11 +21,13 @@ public class UserDTO {
     @Size(min = 4, max = 64)
     private String confirmPassword;
     @Size(min = 4, max = 64)
+    @Email
     private String email;
     @Size(min = 4, max = 64)
     private String confirmEmail;
     @Size(min = 4, max = 32)
     private String displayName;
+
 
     @Override
     public String toString() {
