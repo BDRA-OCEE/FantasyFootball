@@ -2,7 +2,6 @@ package Module3Project.FantasyFootball.FootballApi.TestApis;
 
 import Module3Project.FantasyFootball.Player.*;
 import Module3Project.FantasyFootball.Player.APIResponse.APIResponse;
-import Module3Project.FantasyFootball.Player.APIResponse.PlayerResponse;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.HttpEntity;
@@ -13,7 +12,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
-import java.util.List;
 
 @Service
 public class FootballApiSportsService {
@@ -55,6 +53,34 @@ public class FootballApiSportsService {
             }*/
 
             return apiResponseResponseEntity.getBody();
+        } catch (Exception e){
+            throw new RuntimeException();
+        }
+    }
+
+
+    public PlayersListDTO getAllPlayersApiSportsTest() {
+        try {
+            HttpHeaders httpHeaders = new HttpHeaders();
+            httpHeaders.set("X-RapidAPI-Key", apiSportsKey);
+            httpHeaders.set("x-rapidapi-host", apiSportsHost);
+
+            RestTemplate restTemplate = new RestTemplate();
+            ResponseEntity<PlayersListDTO> playerDTOResponseEntity = restTemplate.exchange(apiSportsUrl, HttpMethod.GET, new HttpEntity<>(httpHeaders), PlayersListDTO.class);
+            //ResponseEntity<APIResponse> apiResponseResponseEntity = restTemplate.exchange(apiSportsUrl, HttpMethod.GET, new HttpEntity<>(httpHeaders), APIResponse.class);
+
+            /*RestTemplate restTemplate = new RestTemplate();
+            ResponseEntity<String> responseEntity = restTemplate.exchange(apiSportsUrl, HttpMethod.GET, new HttpEntity<>(httpHeaders), String.class);
+
+            ObjectMapper objectMapper = new ObjectMapper();
+            APIResponse apiResponse = objectMapper.readValue(responseEntity.getBody(), APIResponse.class);
+
+            List<PlayerResponse> playerResponses = apiResponse.getResponse();
+            for (PlayerResponse playerResponse : playerResponses) {
+                PlayerDTO playerDTO = playerResponse.getPlayerDTO();
+            }*/
+
+            return playerDTOResponseEntity.getBody();
         } catch (Exception e){
             throw new RuntimeException();
         }
