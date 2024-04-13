@@ -3,6 +3,7 @@ package Module3Project.FantasyFootball.FootballApi;
 import Module3Project.FantasyFootball.FootballApi.TestApis.FootballApiSportsService;
 import Module3Project.FantasyFootball.FootballApi.TestApis.FootballRapidApiService;
 import Module3Project.FantasyFootball.Player.APIResponse.APIResponse;
+import Module3Project.FantasyFootball.Player.PlayerDTO;
 import Module3Project.FantasyFootball.Player.PlayersListDTO;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
+import java.util.List;
 
 @RestController
 //@RequestMapping("/api")
@@ -48,7 +50,7 @@ public class FootballApiController {
     }*/
 
     @GetMapping("/api/api-sports")
-    public APIResponse getApiSports() {
+    public PlayersListDTO getApiSports() {
         return apiSportsService.getAllPlayersApiSports();
     }
 
@@ -57,6 +59,14 @@ public class FootballApiController {
         apiSportsService.parseJsonAndExtractPlayers(json);
     }
 
+    @GetMapping("/api/api-sportst")
+    public Object getApiSportsTest() {
+        return apiSportsService.getAllPlayersApiSportsTest();
+    }
 
+    @GetMapping("/api/api-sportst2")
+    public ResponseEntity getApiSportsTest2() {
+        return apiSportsService.getAllPlayersApiSportsTest2();
+    }
 
 }
