@@ -22,7 +22,7 @@ public class FantasyFootballApplication {
 		SpringApplication.run(FantasyFootballApplication.class, args);
 	}
 
-	@Bean
+	/*@Bean
 	CommandLineRunner commandLineRunner(FootballApiSportsService footballApiSportsService, PlayerRepository playerRepository, PlayerMapper playerMapper, PlayerDTORepository playerDTORepository){
 		return args -> {
 			List<PlayerDTO> playerDTOList = footballApiSportsService.getAllPlayersCMDLineMain();
@@ -30,5 +30,5 @@ public class FantasyFootballApplication {
 			playerDTORepository.saveAll(playerDTOList);
 			LOGGER.info("Saved {} players in the database", playerDTOList.size());
 		};
-	}
+	}*/
 }
