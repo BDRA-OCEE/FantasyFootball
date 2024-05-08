@@ -1,5 +1,8 @@
 package Module3Project.FantasyFootball.Player.APIResponse;
 
+import Module3Project.FantasyFootball.Player.Player;
+import Module3Project.FantasyFootball.Player.PlayerDTO;
+import Module3Project.FantasyFootball.Player.PlayerDTONotEntity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,6 +16,8 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class APIResponse {
     private String get;
-    private List<PlayerResponse> response;
+    private String results;
+    private String[] error;
+    private PlayerDTONotEntity[] response;
 
 }

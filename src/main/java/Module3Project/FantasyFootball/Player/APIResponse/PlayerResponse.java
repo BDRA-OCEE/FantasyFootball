@@ -12,5 +12,5 @@ import org.springframework.stereotype.Component;
 @Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class PlayerResponse {
-     PlayerDTO playerDTO;
+     private PlayerDTO playerDTO;
 }

@@ -59,18 +59,23 @@ public class FootballApiController {
         apiSportsService.parseJsonAndExtractPlayers(json);
     }
 
-    @GetMapping("/api/api-sports3")
+    @GetMapping("/api/api-sports-test")
     public Object getApiSportsTest() {
         return apiSportsService.getAllPlayersApiSportsTest();
     }
 
-    @GetMapping("/api/api-sports4")
+    @GetMapping("/api/api-sports-test2")
     public ResponseEntity getApiSportsTest2() {
         return apiSportsService.getAllPlayersApiSportsTest2();
     }
 
-    @GetMapping("/api/api-sports5")
-    public List<PlayerDTO> getApiSportsTest3() {
+    @GetMapping("/api/api-sports-test-cmd")
+    public List<PlayerDTO> getApiSportsTestCMD() {
         return apiSportsService.getAllPlayersCMDLineMain();
+    }
+
+    @GetMapping("/api/api-sports-test3")
+    public ResponseEntity getApiSportsTest3() {
+        return apiSportsService.getAllPlayersApiSportsTest3();
     }
 }

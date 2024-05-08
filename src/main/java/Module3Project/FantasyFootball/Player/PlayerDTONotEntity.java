@@ -2,31 +2,35 @@ package Module3Project.FantasyFootball.Player;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.stereotype.Component;
+
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class PlayerDTO {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Long id;
+public class PlayerDTONotEntity {
 
+    @JsonProperty("id")
+    private String id;
+    @JsonProperty("name")
     private String name;
+    @JsonProperty("firstName")
     private String firstName;
+    @JsonProperty("lastName")
     private String lastName;
+    @JsonProperty("age")
     private int age;
+    @JsonProperty("nationality")
     private String nationality;
+    @JsonProperty("height")
     private String height;
+    @JsonProperty("weight")
     private String weight;
+    @JsonProperty("injured")
     private boolean injured;
 
     @Override
